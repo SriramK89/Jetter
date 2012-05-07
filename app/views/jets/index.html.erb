@@ -1,0 +1,41 @@
+<html>
+<head>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse">
+            <ul class="nav">
+              <%= render 'layouts/navigation' %>
+              </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<div class="">
+<h1>Your timeline!</h1>
+
+<br />
+<%= link_to 'Drive new jet', new_jet_path %><br/><br/>
+<%
+def getUserName(id)
+  user = User.find_by_id(id)
+  return user.name
+end
+%>
+<% @jets.each do |jet| %>
+<% if jet.user_id == current_user.id %>
+<div class="hero-unit">
+  Jet driven by <b><%= getUserName(jet.user_id) %></b> <%= jet.created_at.strftime(" on %B %d, %Y at %I:%M %p") %><br/>
+    <%= jet.content %><br/><br/>
+    
+    <%= link_to 'Delete jet', jet, confirm: 'Are you sure?', method: :delete %></div>
+<% end %>
+<% end %>
+
+<br />
+
+
+</body>
+</html>

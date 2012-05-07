@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse">
+            <ul class="nav">
+              <%= render 'layouts/navigation' %>
+              </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<div class="container">
+
+<p>
+  <b>Userid:</b>
+  <%= @jet.user_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @jet.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_jet_path(@jet) %> |
+<%= link_to 'Back', jets_path %>
+</div>
+</body>
+</html>
